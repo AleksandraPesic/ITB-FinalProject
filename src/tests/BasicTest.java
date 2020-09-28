@@ -25,7 +25,9 @@ public abstract class BasicTest {
 	protected WebDriverWait wait;
 	protected Screenshot screenshot;
 	protected JavascriptExecutor js;
-	protected String baseUrl;
+	protected String baseUrl = "http://demo.yo-meals.com/";
+	protected String email = "customer@dummyid.com";
+	protected String password = "12345678a";
 	
 	@BeforeClass
 	public void beforeClass() throws IOException {
@@ -39,13 +41,16 @@ public abstract class BasicTest {
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 		screenshot = new AShot().takeScreenshot(driver);
 		js = (JavascriptExecutor)driver;
+		
+		
 	}
 	
 	@AfterMethod
 	public void afterMethod(ITestResult result) throws IOException {
 		if (result.getStatus() == ITestResult.FAILURE) {
-			ImageIO.write(screenshot.getImage(), "png", new File("C:\\Users\\Aleksandra\\eclipse-workspace\\Selenium\\screenshot\\" + DateTime.now().toString("yyyy-dd-M--HH-mm-ss") + ".jpg"));
+			ImageIO.write(screenshot.getImage(), "png", new File("C:\\Users\\Aleksandra\\eclipse-workspace\\Selenium\\screenshot\\" + DateTime.now().toString("yyyy-dd-M--HH-mm-ss") + ".png"));
 		}
+		this.driver.manage().deleteAllCookies();
 	}
 	
 	@AfterClass
