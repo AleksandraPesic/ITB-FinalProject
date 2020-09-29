@@ -16,6 +16,9 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 
+import pages.LocationPopupPage;
+import pages.LoginPage;
+import pages.NotificationSystemPage;
 import ru.yandex.qatools.ashot.AShot;
 import ru.yandex.qatools.ashot.Screenshot;
 
@@ -28,6 +31,14 @@ public abstract class BasicTest {
 	protected String baseUrl = "http://demo.yo-meals.com/";
 	protected String email = "customer@dummyid.com";
 	protected String password = "12345678a";
+	protected String firstName;
+	protected String lastName;
+	protected String address;
+	protected String phone;
+	protected String zipCode;
+	protected String country;
+	protected String state;
+	protected String city;
 	
 	@BeforeClass
 	public void beforeClass() throws IOException {
@@ -41,7 +52,6 @@ public abstract class BasicTest {
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 		screenshot = new AShot().takeScreenshot(driver);
 		js = (JavascriptExecutor)driver;
-		
 		
 	}
 	

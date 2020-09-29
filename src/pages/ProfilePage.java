@@ -5,6 +5,7 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class ProfilePage extends BasicPage {
@@ -56,6 +57,38 @@ public class ProfilePage extends BasicPage {
 	public WebElement getInputPicture() {
 		js.executeScript("arguments[0].click();", this.getUploadPictureButton());
 		return this.driver.findElement(By.xpath("//input[@type='file']"));
+	}
+	
+	public void uploadProfilePicture() {	
+		this.getInputPicture().sendKeys("C:\\ITB-FinalProject\\ITB-FinalProject\\images\\6a00e5520572bb8834017c3875ac22970b.jpg");
+	}
+	
+	public void deleteProfilePicture() {
+		js.executeScript("arguments[0].click();", this.getRemovePictureButton());
+	}
+	
+	public WebElement getSaveButton() {
+		return this.driver.findElement(By.xpath("//*[@id='profileInfoFrm']/div[5]/div/fieldset/input"));
+	}
+	
+	public void changeProfilePage(String firstName, String lastName, String address, String phone, String zipCode, String country, String state, String city) {
+		this.getFirstName().clear();
+		this.getFirstName().sendKeys(firstName);
+		this.getLastName().clear();
+		this.getLastName().sendKeys(lastName);
+		this.getAddress().clear();
+		this.getAddress().sendKeys(address);
+		this.getPhoneNumber().clear();
+		this.getPhoneNumber().sendKeys(phone);
+		this.getZipCode().clear();
+		this.getZipCode().sendKeys(zipCode);
+		Select s1 = new Select(this.getCountry());
+		s1.selectByVisibleText(country);
+		Select s2 = new Select(this.getState());
+		s2.selectByVisibleText(state);
+		Select s3 = new Select(this.getCity());
+		s3.selectByVisibleText(city);
+		js.executeScript("arguments[0].click();", this.getSaveButton());
 	}
 	
 }

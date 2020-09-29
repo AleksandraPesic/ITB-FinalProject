@@ -32,5 +32,6 @@
 	<classpathentry kind="con" path="org.testng.TESTNG_CONTAINER"/>
 	<classpathentry kind="lib" path="C:/Users/Aleksandra/Downloads/ashot-1.5.4.jar"/>
 	<classpathentry kind="lib" path="C:/Users/Aleksandra/Desktop/ITBootcamp/joda-time-2.9.4.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Aleksandra/Desktop/org.apache.commons.io.jar/org.apache.commons.io.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
