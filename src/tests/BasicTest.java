@@ -1,11 +1,14 @@
 package tests;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
 import javax.imageio.ImageIO;
 
+import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.joda.time.DateTime;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
@@ -15,10 +18,13 @@ import org.testng.ITestResult;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
+import org.testng.asserts.SoftAssert;
 
+import pages.AuthPage;
 import pages.LocationPopupPage;
 import pages.LoginPage;
 import pages.NotificationSystemPage;
+import pages.ProfilePage;
 import ru.yandex.qatools.ashot.AShot;
 import ru.yandex.qatools.ashot.Screenshot;
 
@@ -39,6 +45,12 @@ public abstract class BasicTest {
 	protected String country;
 	protected String state;
 	protected String city;
+	protected String quantity;
+	protected String locationName;
+	protected File file;
+	protected FileInputStream fis;
+	protected XSSFWorkbook wb;
+	protected XSSFSheet sheet;
 	
 	@BeforeClass
 	public void beforeClass() throws IOException {
@@ -65,6 +77,8 @@ public abstract class BasicTest {
 	
 	@AfterClass
 	public void afterClass() throws IOException {
+		wb.close();
+		fis.close();
 		this.driver.close();
 	}
 

@@ -42,9 +42,9 @@ public class LocationPopupPage extends BasicPage {
 	
 	public void locationSet(String locationName) {
 		this.getKeyword().click();
-		this.getLocationItem(locationName).getAttribute("data-value");
-//		treba da se doda drugi argument, iz fajla
-		js.executeScript("arguments[0].value=arguments[1]", this.getLocationInput());
+		String dv = this.getLocationItem(locationName).getAttribute("data-value");
+//		treba da se doda drugi argument, iz drugog koraka
+		js.executeScript("arguments[0].value=arguments[1]", this.getLocationInput(), dv);
 		js.executeScript("arguments[0].click();", this.getSubmit());
 	}
 	

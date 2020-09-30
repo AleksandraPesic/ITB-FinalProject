@@ -28,13 +28,13 @@ public class ProfileTest extends BasicTest {
 		phone = "345";
 		zipCode = "18000";
 		country = "United Kingdom";
-		state = "Bristol";
-		city = "Avon";
+		state = "Cambridge";
+		city = "Cambridge";
 		
+		ProfilePage pp = new ProfilePage(this.driver, this.wait, this.js);
 		NotificationSystemPage nsp = new NotificationSystemPage(this.driver, this.wait, this.js);
 		LocationPopupPage lpp = new LocationPopupPage(this.driver, this.wait, this.js);
 		LoginPage lp = new LoginPage(this.driver, this.wait, this.js);
-		ProfilePage pp = new ProfilePage(this.driver, this.wait, this.js);
 		AuthPage ap = new AuthPage(this.driver, this.wait, this.js);
 		
 		SoftAssert sa = new SoftAssert();
@@ -87,8 +87,6 @@ public class ProfileTest extends BasicTest {
 		ap.logOut();
 		
 		sa.assertTrue(nsp.successfulLoginMessage().contains("Logout Successfull!"));
-		
-	
 	}
 
 }

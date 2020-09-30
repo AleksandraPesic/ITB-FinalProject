@@ -89,6 +89,7 @@ public class ProfilePage extends BasicPage {
 		Select s3 = new Select(this.getCity());
 		s3.selectByVisibleText(city);
 		js.executeScript("arguments[0].click();", this.getSaveButton());
+//		dodati sleep izmedju elemenata
 	}
 	
 }
