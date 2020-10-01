@@ -128,6 +128,9 @@ public class MealItemTest extends BasicTest {
 		
 		sa.assertTrue(nsp.successfulLoginMessage().contains("All meals removed from Cart successfully"), "[ERROR] Unexpected message");
 		
+		wb.close();
+		fis.close();
+		
 	}
 
 }

@@ -77,8 +77,6 @@ public abstract class BasicTest {
 	
 	@AfterClass
 	public void afterClass() throws IOException {
-		wb.close();
-		fis.close();
 		this.driver.close();
 	}
 

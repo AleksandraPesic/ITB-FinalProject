@@ -70,6 +70,9 @@ public class SearchTest extends BasicTest {
 					sa.assertTrue(row.getCell(j).getStringCellValue().contains(srp.nameOfAllMeals().get(j-3)), "[ERROR] Search result order is not the same");
 				}
 			}
+			
+			wb.close();
+			fis.close();
 		}
 		
 	}
