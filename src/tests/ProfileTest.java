@@ -42,15 +42,15 @@ public class ProfileTest extends BasicTest {
 		lpp.closeDialog();
 		
 		lp.login(email, password);
-		sa.assertTrue(nsp.successfulLoginMessage().contains("Login Successfull"));
+		sa.assertTrue(nsp.successfulLoginMessage().contains("Login Successfull"), "[ERROR] Unexpected message");
 		
 		this.driver.navigate().to(this.baseUrl + "member/profile");
 		
 		pp.changeProfilePage(firstName, lastName, address, phone, zipCode, country, state, city);
-		sa.assertTrue(nsp.successfulLoginMessage().contains("Setup Successful"));
+		sa.assertTrue(nsp.successfulLoginMessage().contains("Setup Successful"), "[ERROR] Unexpected message");
 		Thread.sleep(2000);
 		ap.logOut();
-		sa.assertTrue(nsp.successfulLoginMessage().contains("Logout Successfull!"));
+		sa.assertTrue(nsp.successfulLoginMessage().contains("Logout Successfull!"), "[ERROR] Unexpected message");
 		
 	}
 	

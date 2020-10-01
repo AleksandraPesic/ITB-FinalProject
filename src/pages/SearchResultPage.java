@@ -16,20 +16,20 @@ public class SearchResultPage extends BasicPage {
 		super(driver, wait, js);
 	}
 	
-	public List<WebElement> getSerachResults() {
-		return this.driver.findElements(By.xpath("//*[@class='product-name']/a"));
+	public List<WebElement> getSearchResults() {
+		return this.driver.findElements(By.xpath("//div[@class='product-content']/div[2]/a"));
 	}
 	
 	public ArrayList<String> nameOfAllMeals() {
 		ArrayList<String> names = new ArrayList<>();
-		for (int i = 0; i < this.getSerachResults().size(); i++) {
-			names.add(this.getSerachResults().get(i).getText());
+		for (int i = 0; i < this.getSearchResults().size(); i++) {
+			names.add(this.getSearchResults().get(i).getText());
 		}
 		return names;
 	}
 	
 	public int numberOfSearchResults() {
-		return this.getSerachResults().size();
+		return this.getSearchResults().size();
 	}
 	
 

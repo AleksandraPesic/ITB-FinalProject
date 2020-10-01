@@ -115,20 +115,18 @@ public class MealItemTest extends BasicTest {
 		for (int i = 1; i <= sheet.getLastRowNum(); i++) {
 			XSSFRow row = sheet.getRow(i);
 			
-			XSSFCell mealUrl = row.getCell(1);
+			XSSFCell mealUrl = row.getCell(0);
 			
-			mealUrl.getHyperlink().getLabel();
-			mealUrl.getHyperlink().getAddress();
-			System.out.println(mealUrl.getHyperlink().getLabel() + mealUrl.getHyperlink().getAddress());
+			this.driver.navigate().to(mealUrl.getStringCellValue());
 			
-//			mp.addToCart(quantity);
-//			
-//			sa.assertTrue(nsp.successfulLoginMessage().contains("Meal Added To Cart"));
+			mp.addToCart(quantity);
+			
+			sa.assertTrue(nsp.successfulLoginMessage().contains("Meal Added To Cart"), "[ERROR] Unexpected message");
 		}
 		
-//		csp.emptyCart();
-//		
-//		sa.assertTrue(nsp.successfulLoginMessage().contains("All meals removed from Cart successfully"));
+		csp.emptyCart();
+		
+		sa.assertTrue(nsp.successfulLoginMessage().contains("All meals removed from Cart successfully"), "[ERROR] Unexpected message");
 		
 	}
 

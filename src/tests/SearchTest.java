@@ -22,6 +22,7 @@ import pages.LoginPage;
 import pages.MealPage;
 import pages.NotificationSystemPage;
 import pages.ProfilePage;
+import pages.SearchResultPage;
 
 public class SearchTest extends BasicTest {
 	
@@ -37,6 +38,7 @@ public class SearchTest extends BasicTest {
 		AuthPage ap = new AuthPage(this.driver, this.wait, this.js);
 		MealPage mp = new MealPage(this.driver, this.wait, this.js);
 		CartSummaryPage csp = new CartSummaryPage(this.driver, this.wait, this.js);
+		SearchResultPage srp = new SearchResultPage(this.driver, this.wait, this.js);
 		
 		SoftAssert sa = new SoftAssert();
 		
@@ -49,21 +51,26 @@ public class SearchTest extends BasicTest {
 		wb = new XSSFWorkbook(fis);
 		sheet = wb.getSheet("Meal Search Results");
 		
-		for (int i = 1; i <= sheet.getLastRowNum(); i++) {
+		for (int i = 1; i <= 6; i++) {
 			XSSFRow row = sheet.getRow(i);
 			
+			XSSFCell location = row.getCell(0);
 			XSSFCell mealUrl = row.getCell(1);
+			XSSFCell numberOfResults = row.getCell(2);
 			
+			this.driver.navigate().to(mealUrl.getStringCellValue());
 			
+			lpp.openPopupDialog();
+			lpp.locationSet(location.getStringCellValue());
 			
-			mp.addToCart(quantity);
+			sa.assertTrue(numberOfResults.getNumericCellValue() == srp.numberOfSearchResults(), "[ERROR] Number of search results is not the same.");
 			
-			sa.assertTrue(nsp.successfulLoginMessage().contains("Meal Added To Cart"));
+			for (int j = 3; j < 2 + numberOfResults.getNumericCellValue(); j++) {
+				if (row.getCell(j) != null) {
+					sa.assertTrue(row.getCell(j).getStringCellValue().contains(srp.nameOfAllMeals().get(j-3)), "[ERROR] Search result order is not the same");
+				}
+			}
 		}
-		
-		csp.emptyCart();
-		
-		sa.assertTrue(nsp.successfulLoginMessage().contains("All meals removed from Cart successfully"));
 		
 	}
 
