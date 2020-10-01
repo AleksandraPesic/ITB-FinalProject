@@ -73,6 +73,7 @@ public abstract class BasicTest {
 			ImageIO.write(screenshot.getImage(), "png", new File("screenshot/" + DateTime.now().toString("yyyy-dd-M--HH-mm-ss") + ".png"));
 		}
 		this.driver.manage().deleteAllCookies();
+		this.driver.navigate().refresh();
 	}
 	
 	@AfterClass

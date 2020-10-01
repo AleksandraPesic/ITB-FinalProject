@@ -45,7 +45,7 @@ public class MealItemTest extends BasicTest {
 		
 		mp.addToCart(quantity);
 		
-		sa.assertTrue(nsp.successfulLoginMessage().contains("The Following Errors Occurred: Please Select Location"), "[ERROR] Unexpected message appeared.");
+		sa.assertTrue(nsp.successfulLoginMessage().contains("The Following Errors Occurred: Please Select Location"), "[ERROR] 'Select Location' message did not appear.");
 		
 		nsp.messageDisappear();
 		
@@ -76,7 +76,7 @@ public class MealItemTest extends BasicTest {
 		
 		mp.addToFavourite();
 		
-		sa.assertTrue(nsp.successfulLoginMessage().contains("Please login first!"), "[ERROR] Unexpected message appeared.");
+		sa.assertTrue(nsp.successfulLoginMessage().contains("Please login first!"), "[ERROR] 'Please login' message did not appear.");
 		
 		this.driver.navigate().to(this.baseUrl + "guest-user/login-form");
 		
@@ -121,12 +121,12 @@ public class MealItemTest extends BasicTest {
 			
 			mp.addToCart(quantity);
 			
-			sa.assertTrue(nsp.successfulLoginMessage().contains("Meal Added To Cart"), "[ERROR] Unexpected message");
+			sa.assertTrue(nsp.successfulLoginMessage().contains("Meal Added To Cart"), "[ERROR] Meal was not added to cart.");
 		}
 		
 		csp.emptyCart();
 		
-		sa.assertTrue(nsp.successfulLoginMessage().contains("All meals removed from Cart successfully"), "[ERROR] Unexpected message");
+		sa.assertTrue(nsp.successfulLoginMessage().contains("All meals removed from Cart successfully"), "[ERROR] All items were not removed from cart.");
 		
 		wb.close();
 		fis.close();
