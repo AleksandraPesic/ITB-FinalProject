@@ -42,15 +42,15 @@ public class ProfileTest extends BasicTest {
 		lpp.closeDialog();
 		
 		lp.login(email, password);
-		sa.assertTrue(nsp.successfulLoginMessage().contains("Login Successfull"), "[ERROR] Unexpected message");
+		sa.assertTrue(nsp.successfulLoginMessage().contains("Login Successfull"), "[ERROR] Login was not successful.");
 		
 		this.driver.navigate().to(this.baseUrl + "member/profile");
 		
 		pp.changeProfilePage(firstName, lastName, address, phone, zipCode, country, state, city);
-		sa.assertTrue(nsp.successfulLoginMessage().contains("Setup Successful"), "[ERROR] Unexpected message");
+		sa.assertTrue(nsp.successfulLoginMessage().contains("Setup Successful"), "[ERROR] Profile was not updated.");
 		Thread.sleep(2000);
 		ap.logOut();
-		sa.assertTrue(nsp.successfulLoginMessage().contains("Logout Successfull!"), "[ERROR] Unexpected message");
+		sa.assertTrue(nsp.successfulLoginMessage().contains("Logout Successfull!"), "[ERROR] Logout was not successful.");
 		
 	}
 	
@@ -69,24 +69,24 @@ public class ProfileTest extends BasicTest {
 		lpp.closeDialog();
 		
 		lp.login(email, password);
-		sa.assertTrue(nsp.successfulLoginMessage().contains("Login Successfull"));
+		sa.assertTrue(nsp.successfulLoginMessage().contains("Login Successfull"), "[ERROR] Login was not successful.");
 		
 		this.driver.navigate().to(this.baseUrl + "member/profile");
 		
 		pp.uploadProfilePicture();
-		sa.assertTrue(nsp.successfulLoginMessage().contains("Profile Image Uploaded Successfully"));
+		sa.assertTrue(nsp.successfulLoginMessage().contains("Profile Image Uploaded Successfully"), "[ERROR] Profile image was not successfully uploaded.");
 		
 		nsp.messageDisappear();
 		
 		pp.deleteProfilePicture();
 		
-		sa.assertTrue(nsp.successfulLoginMessage().contains("Profile Image Deleted Successfully"));
+		sa.assertTrue(nsp.successfulLoginMessage().contains("Profile Image Deleted Successfully"), "[ERROR] Profile image was not successfully deleted.");
 		
 		nsp.messageDisappear();
 		
 		ap.logOut();
 		
-		sa.assertTrue(nsp.successfulLoginMessage().contains("Logout Successfull!"));
+		sa.assertTrue(nsp.successfulLoginMessage().contains("Logout Successfull!"), "[ERROR] Logout was not successful.");
 	}
 
 }

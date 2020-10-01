@@ -74,19 +74,14 @@ public class ProfilePage extends BasicPage {
 	public void changeProfilePage(String firstName, String lastName, String address, String phone, String zipCode, String country, String state, String city) throws InterruptedException {
 		this.getFirstName().clear();
 		this.getFirstName().sendKeys(firstName);
-		Thread.sleep(1000);
 		this.getLastName().clear();
 		this.getLastName().sendKeys(lastName);
-		Thread.sleep(1000);
 		this.getAddress().clear();
 		this.getAddress().sendKeys(address);
-		Thread.sleep(1000);
 		this.getPhoneNumber().clear();
 		this.getPhoneNumber().sendKeys(phone);
-		Thread.sleep(1000);
 		this.getZipCode().clear();
 		this.getZipCode().sendKeys(zipCode);
-		Thread.sleep(1000);
 		Select s1 = new Select(this.getCountry());
 		s1.selectByVisibleText(country);
 		Thread.sleep(1000);
@@ -95,9 +90,7 @@ public class ProfilePage extends BasicPage {
 		Thread.sleep(1000);
 		Select s3 = new Select(this.getCity());
 		s3.selectByVisibleText(city);
-		Thread.sleep(1000);
 		js.executeScript("arguments[0].click();", this.getSaveButton());
-//		dodati sleep izmedju elemenata
 	}
 	
 }

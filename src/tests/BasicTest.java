@@ -70,14 +70,14 @@ public abstract class BasicTest {
 	@AfterMethod
 	public void afterMethod(ITestResult result) throws IOException {
 		if (result.getStatus() == ITestResult.FAILURE) {
-			ImageIO.write(screenshot.getImage(), "png", new File("C:\\Users\\Aleksandra\\eclipse-workspace\\Selenium\\screenshot\\" + DateTime.now().toString("yyyy-dd-M--HH-mm-ss") + ".png"));
+			ImageIO.write(screenshot.getImage(), "png", new File("screenshot/" + DateTime.now().toString("yyyy-dd-M--HH-mm-ss") + ".png"));
 		}
 		this.driver.manage().deleteAllCookies();
 	}
 	
 	@AfterClass
 	public void afterClass() throws IOException {
-		this.driver.close();
+		this.driver.quit();
 	}
 
 }

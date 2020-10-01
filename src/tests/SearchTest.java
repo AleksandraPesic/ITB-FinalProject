@@ -63,11 +63,13 @@ public class SearchTest extends BasicTest {
 			lpp.openPopupDialog();
 			lpp.locationSet(location.getStringCellValue());
 			
-			sa.assertTrue(numberOfResults.getNumericCellValue() == srp.numberOfSearchResults(), "[ERROR] Number of search results is not the same.");
+			sa.assertEquals(srp.numberOfSearchResults(), numberOfResults.getNumericCellValue());
 			
 			for (int j = 3; j < 2 + numberOfResults.getNumericCellValue(); j++) {
 				if (row.getCell(j) != null) {
-					sa.assertTrue(row.getCell(j).getStringCellValue().contains(srp.nameOfAllMeals().get(j-3)), "[ERROR] Search result order is not the same");
+					String expectedProductName = row.getCell(j).getStringCellValue();
+					String actualProductName = srp.nameOfAllMeals().get(j-3);
+					sa.assertTrue(expectedProductName.contains(actualProductName), "[ERROR] Search result order is not the same");
 				}
 			}
 			

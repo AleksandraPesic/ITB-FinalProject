@@ -45,7 +45,7 @@ public class MealItemTest extends BasicTest {
 		
 		mp.addToCart(quantity);
 		
-		sa.assertTrue(nsp.successfulLoginMessage().contains("The Following Errors Occurred: Please Select Location"));
+		sa.assertTrue(nsp.successfulLoginMessage().contains("The Following Errors Occurred: Please Select Location"), "[ERROR] Unexpected message appeared.");
 		
 		nsp.messageDisappear();
 		
@@ -55,7 +55,7 @@ public class MealItemTest extends BasicTest {
 		Thread.sleep(1000);
 		mp.addToCart(quantity);
 		
-		sa.assertTrue(nsp.successfulLoginMessage().contains("Meal Added To Cart"));
+		sa.assertTrue(nsp.successfulLoginMessage().contains("Meal Added To Cart"), "[ERROR] Add to Cart was not successful.");
 		
 	}
 	
@@ -76,7 +76,7 @@ public class MealItemTest extends BasicTest {
 		
 		mp.addToFavourite();
 		
-		sa.assertTrue(nsp.successfulLoginMessage().contains("Please login first!"));
+		sa.assertTrue(nsp.successfulLoginMessage().contains("Please login first!"), "[ERROR] Unexpected message appeared.");
 		
 		this.driver.navigate().to(this.baseUrl + "guest-user/login-form");
 		
@@ -85,7 +85,7 @@ public class MealItemTest extends BasicTest {
 		this.driver.navigate().to(this.baseUrl + "meal/lobster-shrimp-chicken-quesadilla-combo");
 		
 		mp.addToFavourite();
-		sa.assertTrue(nsp.successfulLoginMessage().contains("Product has been added to your favorites."));
+		sa.assertTrue(nsp.successfulLoginMessage().contains("Product has been added to your favorites."), "[ERROR] Product was not added to favorites.");
 		
 	}
 	
